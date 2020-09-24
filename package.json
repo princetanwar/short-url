@@ -1,0 +1,22 @@
+{
+  "name": "URL-short",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.6",
+    "shortid": "^2.2.15",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <form>
+      <h2>Short Url</h2>
+      <label for="longurl">Enter Long Url</label>
+      <input type="url" name="longurl" id="longurl" required />
+
+      <button>Short</button>
+      <div id="result"></div>
+    </form>
+
+    <script>
+      const form = document.querySelector("form");
+      const inputFild = document.getElementById("longurl");
+      const result = document.getElementById("result");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const longurl = inputFild.value;
+        result.innerHTML = "";
+
+        try {
+          const res = await fetch("/api/short", {
+            method: "POST",
+            body: JSON.stringify({ longurl }),
+            headers: { "Content-Type": "application/json" },
+          });
+          const data = await res.json();
+          console.log(data);
+          if (data.error) {
+            result.innerHTML = data.error;
+          } else {
+            result.innerHTML = `<a href="${data.url}" target="_blank">Short link</a>`;
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    </script>
+  </body>
+</html>
