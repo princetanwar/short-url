@@ -35,7 +35,8 @@ label {
 }
 
 button {
-  margin-top: 30px;
+  margin: 30px auto 0 auto;
+
   border-radius: 36px;
   background: #fee996;
   border: 0;

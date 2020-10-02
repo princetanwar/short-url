@@ -32,4 +32,4 @@ app.get("/", (req, res) => {
 });
 
 // api route for short the url and get long url from short url
-app.use("/api", apiRoute);
+app.use(apiRoute);

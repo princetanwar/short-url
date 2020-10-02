@@ -13,6 +13,7 @@
       <input type="url" name="longurl" id="longurl" required />
 
       <button>Short</button>
+
       <div id="result"></div>
     </form>
 
@@ -27,7 +28,7 @@
         result.innerHTML = "";
 
         try {
-          const res = await fetch("/api/short", {
+          const res = await fetch("/short", {
             method: "POST",
             body: JSON.stringify({ longurl }),
             headers: { "Content-Type": "application/json" },
@@ -37,12 +38,19 @@
           if (data.error) {
             result.innerHTML = data.error;
           } else {
-            result.innerHTML = `<a href="${data.url}" target="_blank">Short link</a>`;
+            result.innerHTML = `<input type="text" name="" id="shortUrl" value="${data.url}"/>  <button onclick="copyFunc()" >Copy to clipbord</button>`;
           }
         } catch (error) {
           console.log(error);
         }
       });
+
+      function copyFunc() {
+        var copyText = document.getElementById("shortUrl");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+      }
     </script>
   </body>
 </html>

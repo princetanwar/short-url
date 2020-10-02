@@ -14,7 +14,7 @@ module.exports.shortUrlPost = async (req, res) => {
 
       if (url) {
         const { urlCode } = url;
-        res.json({ url: `${baseUrl}/api/${urlCode}` });
+        res.json({ url: `${baseUrl}/${urlCode}` });
       } else {
         const url = new shortUrl({
           longUrl: longurl,
@@ -23,7 +23,7 @@ module.exports.shortUrlPost = async (req, res) => {
 
         const { urlCode } = await url.save();
 
-        res.json({ url: `${baseUrl}/api/${urlCode}` });
+        res.json({ url: `${baseUrl}/${urlCode}` });
       }
     }
   } catch (err) {
